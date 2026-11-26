@@ -10,8 +10,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -143,8 +144,7 @@ fun DaftarSiswa(
     modifier: Modifier = Modifier
 ) {
     LazyColumn(modifier = modifier){
-        items(items = itemsSiswa, key = {it.id}){
-                person ->
+        itemsIndexed(items = itemsSiswa, key = { index, person -> "${person.id}_$index" }){ _, person ->
             ItemSiswa(
                 siswa = person,
                 modifier = Modifier
